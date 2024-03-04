@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #F7E5DA; backdrop-filter: blur(10px); background-size: cover; background-position: center; flex-direction: column;">
+    <div style="width: 300px; background-color: #832B00; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, .2);">
+        <form action="/AdminLogin" method="POST" style="display: flex; flex-direction: column;">
+            <h1 style="text-align: center; color: #fff;">Admin Login</h1>
+            <p style="color: rgb(235, 227, 227); text-align: center;"> {{message}}</p>
+            <input type="text" name="adminname" placeholder="Adminname" style="margin-bottom: 10px; width: 100%; height: 40px; padding: 2px; border: none; border-radius: 5px;" required>
+            <input type="password" name="password" placeholder="Password" style="margin-bottom: 10px; width: 100%; height: 40px; padding: 2px; border: none; border-radius: 5px;" required>
+            <button type="submit" style="padding: 15px; border: none; border-radius: 5px; background-color: #F7E5DA; color: #832B00; cursor: pointer;">Login</button>
+            <div style="text-align: center; margin-top: 10px;">
+                <p style="color: #fff;">Don't have an account? <a href="{{ url_for('AdminReg')}}" style="color: #fff;">Sign-up</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

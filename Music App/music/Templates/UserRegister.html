@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #F7E5DA;">
+    <div style="width: 350px; background-color: #832B00; border-radius: 10px; padding: 30px; box-shadow: 0 0 10px rgba(0, 0, 0, .2);">
+        <form action="/UserRegister" method="POST" style="display: flex; flex-direction: column;">
+            <h1 style="text-align: center; color: #F7E5DA;">User Registration</h1>
+            <p style="color: #F7E5DA; text-align: center;"> {{message}}</p>
+            <input type="text" name="username" placeholder="Username" style="margin-bottom: 15px; border-radius: 5px; padding: 15px;" required>
+            <input type="email" name="email" placeholder="Email" style="margin-bottom: 15px; border-radius: 5px; padding: 15px;" required>
+            <input type="password" name="password" placeholder="Password" style="margin-bottom: 15px; border-radius: 5px; padding: 15px;" required>
+            <input type="password" name="password" placeholder="Confirm Password" style="margin-bottom: 15px; border-radius: 5px; padding: 15px;" required>
+            <label style="margin-bottom: 10px;"><input type="checkbox" name="remember"> Remember me</label>
+            <button type="submit" style="margin-bottom: 10px; border-radius: 5px; padding: 20px;background-color: #F7E5DA; color: #000000; cursor: pointer;">Sign-up</button>
+            <div style="text-align: center; margin-top: 10px;">
+                <p style="color: #F7E5DA;">Already have an account? <a style="color: #ff8940;" href="{{ url_for('UserLogin')}}">Login</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

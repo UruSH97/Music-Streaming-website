@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F7E5DA;
+        }
+
+        form {
+            width: 300px;
+            background-color: #832B00;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #F7E5DA;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        span {
+            background-color: #F7E5DA;
+            color: #832B00;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #F7E5DA;
+            color: #d25000;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #439ce6;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/creatorreg" method="POST">
+        <h1>Wanna be a Creator?</h1>
+
+        <label for="yes">
+            <span><input type="radio" id="yes" name="choice" value="yes"> Yes</span>
+        </label>
+
+        <label for="no">
+            <span><input type="radio" id="no" name="choice" value="no"> Go Back</span>
+        </label>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Song</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: #F7E5DA;
+            color: #832B00;
+        }
+
+        .navbar {
+            background-color: #832B00;
+            color: #F7E5DA;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #F7E5DA;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            background-color: #F7E5DA;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #F7E5DA;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #832B00;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .upload-button {
+            background-color: #832B00;
+            color: #F7E5DA;
+            border: none;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #6B2300;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Creator Account</h1>
+    <div>
+        <a href="{{url_for('UserPage')}}">Userpage</a>
+        <a href="{{url_for('creatordashboard')}}">Your Dashboard</a>
+        <a href="{{url_for('UserLogin')}}">Logout</a>
+    </div>
+</div>
+
+<div class="content">
+    <h1>Edit Track</h1>
+
+    <form action="{{ url_for('edit', song_id=selected_song.id) }}" method="POST">
+        <label for="new_title">New Title:</label>
+        <input type="text" id="new_title" name="new_title" value="{{ selected_song.track }}" required>
+
+        <label for="new_creator">Name:</label>
+        <input type="text" id="new_creator" name="new_creator" value="{{ selected_song.creator }}" required>
+
+        <label for="new_lyrics">New Lyrics:</label>
+        <textarea id="new_lyrics" name="new_lyrics" rows="5" required>{{ selected_song.lyrics }}</textarea>
+
+        <button type="submit" class="upload-button">Edit Song</button>
+    </form>
+</div>
+
+</body>
+</html>

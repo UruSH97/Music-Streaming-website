@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #e5ebee, #d6b2b2);
+    }
+
+    .layout {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 20px;
+      padding: 20px;
+      border: 1px solid #e7d2d2;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background: rgba(211, 80, 80, 0.1);
+      backdrop-filter: blur(3px);
+    }
+
+    .Admin {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+      background-color: rgba(228, 29, 29, 0.2);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .Admin h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #fff;
+    }
+
+    .Admin a {
+      text-decoration: none;
+      color: #0d5788;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: rgba(237, 17, 17, 0.2);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .app-performance {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .app-subcontainer {
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #130e0e;
+    }
+  </style>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+
+  <form method="/AdminDashboard" method="POST">
+  <section class="layout">
+    <div class="Admin">
+      <h2>Admin Dashboard</h2>
+      <a href="{{url_for('Reviewtracks')}}">All Songs</a>
+      <a href="{{url_for('ReviewCreator')}}">All Users</a>
+      <a href="{{url_for('Index_Page')}}">Logout</a>
+      <div class="app-subcontainer">Total Users:<span>{{ count }}</span></div>
+      <div class="app-subcontainer">Total Creators:<span>{{ creator_count }}</span></div>
+    </div>
+    <div class="container">
+      <h3 style="text-align: center;">App Performance</h3>
+      <div class="app-performance">
+        <div class="app-subcontainer">Top Tracks:<span>
+          {% for track_name in top_track_names %}
+          {{ track_name }}
+          {% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </span></div>
+        <div class="app-subcontainer">Total Albums:<span>8</span></div>
+        <div class="app-subcontainer">Most Popular Track:<h3>{{ top_track }}</h3></div>
+        <div class="app-subcontainer">Most Popular Genre:<h1>Pop</h1></div>
+        <div class="app-subcontainer">{{ line_graph | safe }}</div>
+        <div class="app-subcontainer">{{ pie_graph | safe }}</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

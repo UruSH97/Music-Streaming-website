@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      background-color: #F7E5DA;
+    }
+    .navbar {
+      background-color: #832B00;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #f9f6f6;
+      font-weight: bold;
+    }
+    .content {
+      padding: 20px;
+      margin: 20px;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: rgb(160, 30, 30);
+      margin-left: 20px;
+    }
+    table {
+      width: 80%;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 20px;
+    }
+
+    th, td {
+      border: 1px solid #000000;
+      padding: 12px;
+      text-align: left;
+      border-radius: 5px;
+    }
+
+    td{
+      border-radius: 0px;
+    }
+
+    th {
+      background-color: #ca4e11;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .button {
+      background-color: #832B00;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+  <title>All Users</title>
+</head>
+<body>
+<div class="navbar">
+  <h1>Welcome Admin </h1>
+  <a href="{{url_for('AdminDashboard')}}">Dashboard</a>
+</div>
+
+<div class="content">
+  <h2>All Users/Creators</h2>      
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>User Name</th>
+        <th>Role</th>
+        <th>Action: W/B Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <form method="POST" action="{{ url_for('ReviewCreator') }}">
+        {% for User in Users %}
+        <tr>
+          <td>{{ User.user_id }}</td>
+          <td>{{ User.username }}</td>
+          <td>{{ User.role }}</td>
+
+          
+          <td>
+            <form method="POST" action="{{ url_for('ReviewCreator') }}" style="display:inline;">
+              <input type="hidden" name="Creator_to_delete" value="{{ User.user_id }}">
+              <button type="submit" class="button" name="delete">Delete/Flag</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </form>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

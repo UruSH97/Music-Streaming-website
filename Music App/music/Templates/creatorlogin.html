@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #F7E5DA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .header {
+            color: #000000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 200px;
+            width: 100%;
+            
+        }
+
+        .navbar {
+            background-color: #832B00;
+            color: #F7E5DA;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #F7E5DA;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 0 15px;
+        }
+
+        .wrapper {
+            background-color: #fff;
+            padding: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .wrapper h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #832B00;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            margin-top: 5px;
+        }
+
+        .input-box i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #832B00;
+            color: #F7E5DA;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6B2300;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="UserPage.html" class="logo">Stream  Your Music On Beatify</a>
+        <nav class="navbar">
+            <a href="creatorlogin.html">Creator Account</a>
+            <i class="bx bx-user"></i>
+            <a href="Index_Page.html">Logout</a>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <form action="">
+            <h1>Register as a Creator</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>

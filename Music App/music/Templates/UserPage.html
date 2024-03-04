@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beatify</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #F7E5DA, #832B00) ;
+    }
+
+    nav {
+      background-color: #c94d4d;
+      color: #832B00;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .app-name {
+      font-size: 1.5em;
+      margin-top: 8px;
+    }
+
+    .search-bar {
+      flex-grow: 2;
+      margin: 0 20px;
+    }
+
+    .options {
+      display: flex;
+    }
+
+    .options a {
+      color: rgb(47, 25, 67);
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 1440px;
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 0 10px  #F7E5DA;
+      overflow-x: auto;
+      display: flex;
+      flex-direction: column;
+      margin: 20px auto;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      padding: 15px;
+      background-color: transparent;
+      border-radius: 8px 8px 0 0;
+      color: white;
+    }
+
+    .sub-container {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .sub-container div {
+      background-size: cover;
+      background-position: center;
+      width: 268px;
+      min-width: 200px;
+      height: 268px;
+      max-height: 250px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: #40e26bb5;
+      overflow: hidden;
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .sub-container div img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sub-container div .song-details {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-container div .song-details span {
+      color: #fff;
+    }
+
+    button {
+      background-color: #fff;
+      color: #333;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <form action="/User" method="POST">
+    <nav style="border: 1px solid transparent; border-radius: 5px; background-color:transparent; backdrop-filter: blur(10px);">
+      <div class="app-name" style= "font-style: italic; position: relative; bottom: 7px;">Beatify</div>
+      <div class="form-group">
+        <div style="width: 600px; height: 30px; position: relative; top: 20px; border: 1px solid whitesmoke; border-radius: 30px; right: 0px;">
+        <label for="search_input"><i class='bx bx-search' style="position: relative; left: 7px; top: 3px; align-items: center; "></i></label>
+        <input type="text" class="form-control" id="search_input" name="search_query" placeholder="Search for tracks..." style="position: relative; width: 500px; height: 24px; left: 8px; background-color:transparent; backdrop-filter: blur(5px); border: none; color: whitesmoke; border-left: 2px solid gray;">
+        <p style="color: red; font-size: small;">{{message}}</p>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" style="position: relative; left: 537px; height: 27px; bottom: 10px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; background: transparent; border: none; color: whitesmoke; border-left: 2px solid gray;">Search</button></div>
+      <div class="options">
+        <a href="{{url_for('creatorreg')}}" style="font-style: italic; position: relative; top: 8px; color: whitesmoke; font-size:large;">Creator Account</a>
+        <a href="{{url_for('Index_Page')}}" style="font-style: italic; position: relative; top: 8px; color: whitesmoke; font-size: large;">Log Out</a>
+      </div>
+      
+    </nav>
+
+    <!--song container-->
+    <div class="container">
+      <h2 style="margin-bottom: 0px; padding-bottom: 5px;color:#000000">Trending Searches</h2>
+      <div class="sub-container">
+  {% for track in recommended_tracks %}
+                <div class="track" style="background-image: url('/static/Blank-Space.jpeg');">
+                  <div class="song-details">
+                    <span>Blank Space</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">3.8</p>
+                    <button type="submit" name="selected_track" value="1" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Calm-Down.jpeg');">
+                  <div class="song-details">
+                      <span>Calm-Down</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">4.3</p>
+                      <button type="submit" name="selected_track" value="2" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/natunatu.png');">
+                  <div class="song-details">
+                       <span>Natu Natu</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">4.8</p>
+                       <button type="submit" name="selected_track" value="3" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Company.jpeg');">
+                  <div class="song-details">
+                      <span>Company</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">4.0</p>
+                      <button type="submit" name="selected_track" value="4" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Dilbaro.jpeg');">
+                  <div class="song-details">
+                      <span>Dilbaro</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">4.9</p>
+                      <button type="submit" name="selected_track" value="5" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Kesariya\ Balam.jpeg');">
+                    <div class="song-details">
+        
+                        <span>Kesariya Balam</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">4.7</p>
+                        <button type="submit" name="selected_track" value="6" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                    </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Love\ me.jpeg');">
+                  <div class="song-details">
+                      <span>Love Me Like You Do</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">3.9</p>
+                      <button type="submit" name="selected_track" value="7" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Loca.jpeg');">
+                  <div class="song-details">
+                      <span>Loca</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">3.2</p>
+                      <button type="submit" name="selected_track" value="8" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Sanak.jpeg');">
+                  <div class="song-details">
+                      <span>Sanak</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">3.7</p>
+                      <button type="submit" name="selected_track" value="9" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+                <div class="track" style="background-image: url('/static/Worthit.jpeg');">
+                  <div class="song-details">
+                      <span>Worth It</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">3.0</p>
+                      <button type="submit" name="selected_track" value="10" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+                  </div>
+                </div>
+  {%endfor%}
+      {%for new_song in newsongs%}
+      <div class="track">
+        <div class="song-details">
+            <span>{{new_song.track}}</span><p style="position: relative; color: white; bottom: 100px; left: 70px;">0.0</p>
+            <button type="submit" name="selected_track_for_new_song" value="{{new_song.id}}" style="background-color: transparent; color: white; font-size: medium; border: 1px solid whitesmoke;">Play</button>
+        </div>
+    </div>
+      {%endfor%} 
+      </div>
+  </div>  
+   <!--Plalist container -->
+  <div class="container" style="background-image: none;">
+    <h2 style="width: 300px; margin-bottom: 0px; padding-bottom: 0px; top: 20px;color:#000000">Your Playlists</h2>
+    <div style="position: relative; left: 1000px; bottom: 55px; color: white;">
+        <a href="{{ url_for('myplaylist') }}" style="color: whitesmoke;">
+            <h3 style="margin-bottom: 0px; position: relative; top: 10px;">Create Your Playlist</h3>
+        </a>
+    </div>
+    <div class="sub-container" style="height: 230px;">
+      {% for playlist in playlists %}
+      <div class="playlist" style="background-image: none; height: 225px;" data-playlist-id="{{ playlist.id }}">
+        <div class="song-details" style="height: 230px; background:url(/static/playlistbackground.png); backdrop-filter: blur(50px); border: 2px solid #fff; display: flex; flex-direction: column; justify-content: space-between; position: relative; bottom: 0px;">
+          <div><span style="text-align: center;">{{ playlist.name }}</span></div>
+            <div><input type="hidden" name="delete_playlist" value="{{ playlist.id }}">
+            <button type="submit" class="button" name="delete" style="background: transparent; border: 0.5px solid white; color: whitesmoke; position: relative; bottom: 0%;left: 0%;">Delete</button></div>
+          <ul style="list-style-type: none; padding: 0; text-align: center;">
+            {% for song in playlist.songs %}
+            <li>{{ song.track }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>    
+  </div>
+  
+                        <!-- ALbum container -->
+    <div class="container" style="background-image: none">
+      <h2 style="color:#000000">Albums</h2>
+      <div class="sub-container" style="backdrop-filter: blur(5px);">
+        <div class="genre" style="background-image: url('/static/pop.jpeg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3 style="color: white;">Pop</h3></span>
+
+            <p style="color: whitesmoke;">Love Me Like You Do</p>
+            <p style="color: whitesmoke;">Blank Space</p>
+            <p style="color: whitesmoke;">Calm Down</p>
+            <p style="color: whitesmoke;">Worth It</p>
+          </div>
+        </div>
+        <div class="genre" style="background-image: url('/static/hip_hop.jpeg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3>Hip-Hop Party</h3></span>
+            <p style="color: whitesmoke;">Sanak</p>
+            <p style="color: whitesmoke;">Company</p>
+          </div>
+        </div>
+        <div class="genre" style="background-image: url('/static/classical\ music.jpg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3>classical</h3></span>
+
+            <p style="color: whitesmoke;">classical-tanpura</p>
+            <p style="color: whitesmoke;">flute-table</p>
+          </div>
+        </div>
+        <div class="genre" style="background-image: url('/static/indian_pop.jpeg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3>Indian Pop</h3></span>
+
+            
+            <p style="color: whitesmoke;">Loca</p>
+            <p style="color: whitesmoke;">Natu Natu</p>
+          </div>
+        </div>
+        <div class="genre" style="background-image: url('/static/folk.jpeg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3>Folk</h3></span>
+
+            <p style="color: whitesmoke;">Kesariya Balam</p>
+            <p style="color: whitesmoke;">Dilbaro</p>
+            <p style="color: whitesmoke;">Jugni ji</p>
+          </div>
+        </div>
+        <div class="genre" style="background-image: url('/static/jazz.jpeg');">
+          <div class="song-details" style="backdrop-filter: blur(0.1px);">
+            <span><h3>Jazz</h3></span>
+
+            <p style="color: whitesmoke;">Dream by Dream</p>
+            <p style="color: whitesmoke;">Automn in Paris</p>
+            <p style="color: whitesmoke;">Gimme Gimme</p>
+            <p style="color: whitesmoke;">I Heart You So</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

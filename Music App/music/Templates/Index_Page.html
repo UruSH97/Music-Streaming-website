@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamYourMusicOnBeatify</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #F7E5DA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .card {
+            border: 2px solid #832B00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #832B00;
+            background: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 50px;
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #832B00;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            background-color: #832B00;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #fff;
+            color: #832B00;
+        }
+
+        .login-link {
+            color: #832B00;
+            text-decoration: none;
+            margin-top: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Experience Beatify's Musical World</h1>
+        
+        <div class="button-container">
+            <a href="{{ url_for('UserRegister') }}" class="button">User Registration</a>
+            <a href="{{ url_for('AdminLogin') }}" class="button">Admin Login</a>
+        </div>
+        
+        <a href="{{ url_for('UserLogin') }}" class="login-link">Already have an account? Login</a>
+    </div>
+
+</body>
+</html>

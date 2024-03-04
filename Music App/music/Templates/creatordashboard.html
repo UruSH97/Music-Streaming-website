@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #F7E5DA, #D6B2B2);
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #832B00;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5em;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 10px;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #F7E5DA;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .dashboard-section,
+        .uploads-section {
+            background-color: rgba(211, 80, 80, 0.1);
+            padding: 20px;
+            box-shadow: 0 0 0px rgba(224, 10, 10, 0.1);
+            border-radius: 8px;
+            width: 40%;
+            backdrop-filter: blur(3px);
+        }
+
+        .dashboard-section h2,
+        .uploads-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-style: italic;
+            text-align: center;
+            color: #000000;
+        }
+
+        .dashboard-sub-container {
+            height: 150px;
+            border: 1px solid #F7C8C8;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            font-style: italic;
+            background-color: #F7E5DA;
+        }
+
+        .dashboard-sub-container div {
+            font-size: 28px;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .uploads-section table {
+            border-collapse: collapse;
+            border: 0.5px solid #F7C8C8;
+            width: 100%;
+            background-color:#F7E5DA;
+        }
+
+        .uploads-section th,
+        .uploads-section td {
+            border: 1px solid #F7C8C8;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .uploads-section th {
+            background-color: #932B2B;
+            color: #FBF8F8;
+        }
+
+        .uploads-section a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .uploads-section button {
+            cursor: pointer;
+            background-color: #b40a0a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .uploads-section button:hover {
+            background-color: #B8542E;
+        }
+    </style>
+    <title>Creator Dashboard</title>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1>Creator Dashboard</h1>
+        <div>
+            <a href="{{url_for('upload')}}">Upload</a>
+            <a href="{{url_for('UserPage')}}">UserPage</a>
+            <a href="{{url_for('Index_Page')}}">Logout</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="dashboard-section">
+            <h2>Dashboard</h2>
+            <div class="dashboard-sub-container">
+                <p>Total Songs Uploaded: <div>28</div></p>
+            </div>
+            <div class="dashboard-sub-container">
+                <p>Average Rating: <div>3.9</div></p>
+            </div>
+            <div class="dashboard-sub-container">
+                <p>Total Albums: <div>18</div></p>
+            </div>
+        </div>
+
+        <div class="uploads-section">
+            <h2>Your Recent Uploads</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Song Name</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for new_song in newsongs %}
+                    <tr>
+                        <td><a href="{{ url_for('edit', song_id=new_song.id) }}">{{ new_song.track }}</a></td>
+                        <td>
+                            <form action="creatordashboard" method="POST">
+                                <input type="hidden" name="song_to_delete" value="{{ new_song.id }}">
+                                <button type="submit" name="delete" value="{{new_song.id}}">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="creatordashboard" method="POST">
+                                <input type="hidden" name="edit_song" value="{{ new_song.id }}">
+                                <button type="submit" name="edit" value="{{new_song.id}}">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
